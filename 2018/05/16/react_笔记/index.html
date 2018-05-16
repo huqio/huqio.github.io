@@ -119,7 +119,7 @@ Learn Once, Write Anywhere(支持客户端与服务器渲染)
 
 React高效的原因
 虚拟(virtual)DOM,">
-<meta property="og:updated_time" content="2018-05-16T13:55:07.914Z">
+<meta property="og:updated_time" content="2018-05-16T14:03:19.438Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react_笔记">
 <meta name="twitter:description" content="React的基本认识
@@ -235,7 +235,7 @@ React高效的原因
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Startseite
           </a>
         </li>
       
@@ -245,7 +245,7 @@ React高效的原因
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -322,7 +322,7 @@ React高效的原因
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T20:00:00+08:00">
                 2018-05-16
@@ -502,35 +502,10 @@ React高效的原因
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ReactDOM.unmountComponentAtNode(document.getElementById(&apos;example&apos;)) : 移除组件</div><div class="line">componentWillUnmount() : 组件将要被移除回调</div></pre></td></tr></table></figure>
 </li>
 <li><p>常用的方法</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">        render()</div><div class="line">        constructor()</div><div class="line">        componentDidMount() : 只执行一次, 已经在dom树中, 适合启动/设置一些监听</div><div class="line">        ```   </div><div class="line">      </div><div class="line">### ajax</div><div class="line">- React没有ajax模块, 需要使用其它ajax库</div><div class="line">- 一般是在componentDidMount中发送ajax请求, 得到数据后, 更新state</div><div class="line">- 发送ajax请求的库: fetch.js</div><div class="line">    - fetch是新的发送ajax请求的方式(完全区别于XMLHttpRequest及其封装)</div><div class="line">    - fetch的优点:</div><div class="line">        - 语法简洁，更加语义化</div><div class="line">        - 基于标准Promise实现</div><div class="line">    - 基本语法:</div></pre></td></tr></table></figure>
-<p>  fetch(“<a href="http://blog.parryqiu.com" target="_blank" rel="external">http://blog.parryqiu.com</a>“)<br>  .then(response =&gt; {</p>
-<pre><code>response.json().then(result =&gt; {
-   //处理result
-})
-</code></pre><p>  })<br>  .catch(e =&gt; {</p>
-<pre><code>//处理异常
-</code></pre><p>  })</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    - Fetch 替换 XHR 只是时间问题</div><div class="line">- 发送ajax请求的库: axios</div><div class="line">	- Promise based HTTP client for the browser and node.js</div><div class="line">	- 语法:</div></pre></td></tr></table></figure>
-<pre><code>//get请求
-</code></pre><p>  axios.get(‘/user?ID=12345’)  </p>
-<pre><code>.then(function (response) {
-  console.log(response);
-})
-.catch(function (error) {
-  console.log(error);
-});
-</code></pre><p>  //post请求<br>  axios.post(‘/user’, {</p>
-<pre><code>  firstName: &apos;Fred&apos;,
-  lastName: &apos;Flintstone&apos;
-})
-.then(function (response) {
-  console.log(response);
-})
-.catch(function (error) {
-  console.log(error);
-});
-</code></pre><p>  ```</p>
-</li>
+<pre><code>render()
+constructor()
+componentDidMount() : 只执行一次, 已经在dom树中, 适合启动/设置一些监听
+</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -646,10 +621,10 @@ React高效的原因
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table Des Matières
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Ensemble
+            Übersicht
           </li>
         </ul>
       
@@ -670,7 +645,7 @@ React高效的原因
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">articles</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -740,11 +715,11 @@ React高效的原因
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  Thème -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
