@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -247,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/React 快速上手脚手架 create-react-app/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/13/react_todos笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="胡琼">
@@ -269,8 +269,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/05/16/React 快速上手脚手架 create-react-app/" itemprop="url">
-                  React 快速上手脚手架 create-react-app
+                <a class="post-title-link" href="/2018/05/13/react_todos笔记/" itemprop="url">
+                  react_todos笔记
                 </a>
               
             
@@ -284,10 +284,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T20:00:00+08:00">
-                2018-05-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-13T20:00:00+08:00">
+                2018-05-13
               </time>
             
 
@@ -324,27 +324,84 @@
       
         
           
-            <h3 id="create-react-app-介绍"><a href="#create-react-app-介绍" class="headerlink" title="create-react-app 介绍"></a>create-react-app 介绍</h3><ul>
-<li>为了快速地进行构建使用 React 的项目，FaceBook 官方发布了一个无需配置的、用于快速构建开发环境的脚手架工具 create-react-app。<br>当然，如果你需要 React Native 的脚手架项目，可以查看这里 <a href="https://github.com/react-community/create-react-native-app/" target="_blank" rel="external">create-react-native-app</a></li>
+            <h3 id="编写静态页面"><a href="#编写静态页面" class="headerlink" title="编写静态页面"></a>编写静态页面</h3><ul>
+<li>HTML</li>
+<li>CSS</li>
 </ul>
-<h3 id="使用的原因以及特性："><a href="#使用的原因以及特性：" class="headerlink" title="使用的原因以及特性："></a>使用的原因以及特性：</h3><ul>
-<li>无需配置；</li>
-<li>集成了对 React, JSX, ES6 和 Flow 的支持；</li>
-<li>集成了开发服务器；</li>
-<li>配置好了浏览器热加载的功能；</li>
-<li>在 JavaScript 中可以直接 import CSS 和图片；</li>
-<li>自动处理 CSS 的兼容问题，无需添加 -webkit 前缀；</li>
-<li>集成好了编译命令，编译后直接发布成产品，并且还包含了 sourcemaps。</li>
+<h3 id="拆分组件"><a href="#拆分组件" class="headerlink" title="拆分组件"></a>拆分组件</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">App-------------应用组件</div><div class="line">  TodoHeader---------------头部组件</div><div class="line">  TodoMain-----------------主体组件</div><div class="line">    TodoItem---------------------todo项组件</div><div class="line">  TodoFooter---------------尾部组件</div></pre></td></tr></table></figure>
+<h3 id="实现静态组件"><a href="#实现静态组件" class="headerlink" title="实现静态组件"></a>实现静态组件</h3><ul>
+<li>拆分页面</li>
+<li>拆分样式(就近原则)</li>
 </ul>
-<h3 id="create-react-app-的安装"><a href="#create-react-app-的安装" class="headerlink" title="create-react-app 的安装"></a>create-react-app 的安装</h3><ul>
-<li>命令行中使用 npm 执行安装命令 npm install -g create-react-app，注意需要添加 g 参数进行全局安装以及权限的问题。</li>
-<li>安装后执行运行命令 npm start 即可在浏览器看到运行后的结果，并且已经实现了热加载的功能。</li>
+<h3 id="分析确定组件的state和props"><a href="#分析确定组件的state和props" class="headerlink" title="分析确定组件的state和props"></a>分析确定组件的state和props</h3><ul>
+<li>App:<ul>
+<li>state: <ul>
+<li>todos: [{isDone: false, title: ‘吃饭’}, {isDone: false, title: ‘睡觉’}]</li>
+<li>isAllChecked: boolean</li>
 </ul>
-<h3 id="需要注意的几个点"><a href="#需要注意的几个点" class="headerlink" title="需要注意的几个点"></a>需要注意的几个点</h3><ul>
-<li>Node 的版本必须 &gt;= 4，推荐 Node &gt;= 6 and npm &gt;= 3；</li>
-<li>运行起来后浏览器已经实现了热加载刷新，修改代码保存后浏览器会自动刷新；</li>
-<li>执行 npm test 或 yarn test 可以执行测试动作</li>
-<li>编译项目执行 npm run build 或 yarn build；</li>
+</li>
+</ul>
+</li>
+<li>TodoHeader<ul>
+<li>props: addTodo/func</li>
+</ul>
+</li>
+<li>todoMain<ul>
+<li>props: <ul>
+<li>todos/array   </li>
+<li>deleteTodo/func</li>
+<li>changeTodoState/func</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>todoItem<ul>
+<li>props: <ul>
+<li>todo/object  </li>
+<li>deleteTodo/func </li>
+<li>index/number</li>
+<li>changeTodoState/func</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TodoFooter<ul>
+<li>props: <ul>
+<li>isAllChecked/boolean </li>
+<li>doneCount/number </li>
+<li>totalCount/number</li>
+<li>deleteDone/func</li>
+<li>changeAllState/func</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="实现动态组件"><a href="#实现动态组件" class="headerlink" title="实现动态组件"></a>实现动态组件</h3><ul>
+<li>动态显示初始化todos列表数据<ul>
+<li>App  state–&gt; todos</li>
+<li>初始化todos: constructor()</li>
+<li>todos的结构: [{title:’xx’, isDone:false}, {}]</li>
+<li>通过标签属性向–&gt;TodoMain–&gt;TodoItem传递todos</li>
+</ul>
+</li>
+<li>添加新的todo, 显示在列表首位</li>
+<li>勾选指定todo</li>
+<li>删除指定todo</li>
+<li>显示完成的/所有的todo的数量</li>
+<li>全选/全不选</li>
+<li>删除所有选中的</li>
+</ul>
+<ul>
+<li>父组件向子组件传递数据<ul>
+<li>数据(包含对数据操作的函数)都在父组件里</li>
+<li>数据只能是当前组件和子组件使用, 不能给兄弟组件使用</li>
+<li>共同的数据放在父组件上, 特有的数据放在自己组件内部</li>
+<li>一般数据—&gt; 用于组件页面显示</li>
+<li>函数数据—&gt;调用执行</li>
+<li>父子组件的通信</li>
+</ul>
+</li>
 </ul>
 
           
@@ -381,7 +438,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -426,8 +483,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -481,7 +538,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
