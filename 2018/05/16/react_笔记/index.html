@@ -119,7 +119,7 @@ Learn Once, Write Anywhere(支持客户端与服务器渲染)
 
 React高效的原因
 虚拟(virtual)DOM,">
-<meta property="og:updated_time" content="2018-05-16T14:03:19.438Z">
+<meta property="og:updated_time" content="2018-05-19T08:03:52.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react_笔记">
 <meta name="twitter:description" content="React的基本认识
@@ -377,25 +377,78 @@ React高效的原因
 <li>高效的DOM Diff算法, 最小化页面重绘</li>
 </ul>
 </li>
+<li><a href="http://facebook.github.io/react/" target="_blank" rel="external">ReactJS官网</a></li>
+<li><a href="https://github.com/facebook/react" target="_blank" rel="external">Github地址</a></li>
 </ul>
 <h3 id="使用React"><a href="#使用React" class="headerlink" title="使用React"></a>使用React</h3><ul>
-<li>导入js库文件(react.js, react-dom.js, babel.js)</li>
-<li>在页面中导入</li>
-<li>编码:  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">  var aa = 123</div><div class="line">  ReactDOM.render(&lt;h1&gt;&#123;aa&#125;&lt;/h2&gt;, containerDOM);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<li>相关js库<ul>
+<li>react.js: React的核心库</li>
+<li>react-dom.js: 提供操作DOM的扩展库</li>
+<li>babel.min.js: 解析JSX语法代码转为纯JS语法代码的库</li>
+</ul>
+</li>
+<li><p>在页面中导入js</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;../js/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;../js/react-dom.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;../js/babel.min.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>编码</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;example&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;script type=&quot;text/babel&quot;&gt; //必须用babel</div><div class="line">  ReactDOM.render(&lt;h1&gt;Hello, React!&lt;/h1&gt;, document.getElementById(&apos;example&apos;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><ul>
+<h3 id="认识JSX"><a href="#认识JSX" class="headerlink" title="认识JSX"></a>认识JSX</h3><ul>
+<li><p>虚拟DOM</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 这就是一个简单的虚拟DOM对象</div><div class="line">var element = React.createElement(&apos;h1&apos;, &#123;id:&apos;myTitle&apos;&#125;, &apos;hello&apos;);</div></pre></td></tr></table></figure>
+<ul>
+<li>React提供了一些API来创建一种 <strong>特别</strong> 的一般js对象</li>
+<li>虚拟DOM对象最终都会被React转换为真实的DOM</li>
+<li>我们编码时基本只需要操作react的虚拟DOM相关数据, react会转换为真实DOM变化而更新界面</li>
+</ul>
+</li>
+<li>JSX<ul>
 <li>全称: JavaScript XML</li>
 <li>react定义的一种类似于XML的JS扩展语法: XML+JS</li>
-<li><p>作用: 用来创建react虚拟DOM(元素)对象</p>
-<ul>
-<li>js中直接可以套标签, 但标签要套js需要放在{}中</li>
-<li>在解析显示js数组时, 会自动遍历显示</li>
-<li>把数据的数组转换为标签的数组:  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var liArr = dataArr.map(function(item, index)&#123;</div><div class="line">  return &lt;li key=&#123;index&#125;&gt;&#123;item&#125;&lt;/li&gt;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<li>作用: 用来创建react虚拟DOM(元素)对象<ul>
+<li>注意1: 它不是字符串, 也不是HTML/XML标签</li>
+<li>注意2: 它最终产生的就是一个JS对象</li>
+</ul>
+</li>
+<li>标签名任意: HTML标签或其它标签</li>
+<li>标签属性任意: HTML标签属性或其它</li>
+<li>基本语法规则<ul>
+<li>遇到 <strong>&lt;</strong> 开头的代码, 以标签的语法解析: html同名标签转换为html同名元素, 其它标签需要特别解析</li>
+<li>遇到以 <strong>{</strong> 开头的代码，以JS的语法解析: 标签中的js代码必须用{}包含</li>
+</ul>
+</li>
+<li>babel.js的作用<ul>
+<li>浏览器的js引擎是不能直接解析JSX语法代码的, 需要babel转译为纯JS的代码才能运行</li>
+<li>只要用了JSX，都要加上type=”text/babel”, 声明需要babel来处理</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p>注意:     </p>
+<li>渲染虚拟DOM(元素)<ul>
+<li>语法: ReactDOM.render(virtualDOM, containerDOM) :</li>
+<li>作用: 将虚拟DOM元素渲染到真实容器DOM中显示</li>
+<li>参数说明<ul>
+<li>参数一: 纯js或jsx创建的虚拟dom对象</li>
+<li>参数二: 用来包含虚拟DOM元素的真实dom元素对象(一般是一个div)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>创建虚拟DOM的2种方式:</p>
+<ul>
+<li><p>纯JS(一般不用):</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">React.createElement(&apos;h1&apos;, &#123;id:&apos;myTitle&apos;&#125;, title)</div></pre></td></tr></table></figure>
+</li>
+<li><p>JSX:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h1 id=&apos;myTitle&apos;&gt;&#123;title&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>例：动态展示列表数据</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const names = [&apos;Tom2&apos;, &apos;Jack2&apos;, &apos;Bob2&apos;];</div><div class="line">ReactDOM.render(</div><div class="line">    &lt;ul&gt;</div><div class="line">        &#123; names.map((name, index) =&gt; &lt;li key=&#123;index&#125;&gt;&#123;name&#125;&lt;/li&gt;) &#125;</div><div class="line">    &lt;/ul&gt;, </div><div class="line">    document.getElementById(&apos;xxx&apos;)</div><div class="line">)</div></pre></td></tr></table></figure>
+</li>
+<li><p>JSX语法注意:     </p>
 <ul>
 <li>标签必须有结束</li>
 <li>标签的class属性必须改为className属性</li>
@@ -403,110 +456,151 @@ React高效的原因
 </ul>
 </li>
 </ul>
-<h3 id="Component-React是面向组件编程的-组件化编码开发"><a href="#Component-React是面向组件编程的-组件化编码开发" class="headerlink" title="Component : React是面向组件编程的(组件化编码开发)"></a>Component : React是面向组件编程的(组件化编码开发)</h3><ul>
-<li><p>基本理解和使用</p>
+<h3 id="Component基础"><a href="#Component基础" class="headerlink" title="Component基础"></a>Component基础</h3><ul>
+<li><p>自定义组件(Component) :</p>
 <ul>
-<li>自定义的标签: 组件类(构建函数/一般函数/类)/标签</li>
-<li>创建组件类<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//方式1: 无状态函数(最简洁, 推荐使用)</div><div class="line">function MyComponent1() &#123;</div><div class="line">  return &lt;h1&gt;自定义组件标题11111&lt;/h1&gt;;</div><div class="line">&#125;</div><div class="line">//方式2: ES6类语法(复杂组件, 推荐使用)</div><div class="line">class MyComponent3 extends React.Component &#123;</div><div class="line">  render () &#123;</div><div class="line">    return &lt;h1&gt;自定义组件标题33333&lt;/h1&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">//方式3: ES5老语法(不推荐使用了)</div><div class="line">var MyComponent2 = React.createClass(&#123;</div><div class="line">  render () &#123;</div><div class="line">    return &lt;h1&gt;自定义组件标题22222&lt;/h1&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<li>React的核心语法和概念</li>
+<li>作用类似于angular中自定义标签指令</li>
+<li><p>组件的2个基本概念</p>
+<ul>
+<li>组件类(工厂函数/构造函数/类): MyCompoent</li>
+<li>组件标签: <mycompoent><br>-定义组件类<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//方式1: 工厂(无状态)函数(最简洁, 推荐使用)</div><div class="line">function MyComponent1() &#123;</div><div class="line">  return &lt;h1&gt;自定义组件标题11111&lt;/h1&gt;;</div><div class="line">&#125;</div><div class="line">//方式2: ES6类语法(复杂组件, 推荐使用)</div><div class="line">class MyComponent3 extends React.Component &#123;</div><div class="line">  render () &#123;</div><div class="line">    return &lt;h1&gt;自定义组件标题33333&lt;/h1&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">//方式3: ES5老语法(不推荐使用了)</div><div class="line">var MyComponent2 = React.createClass(&#123;</div><div class="line">  render () &#123;</div><div class="line">    return &lt;h1&gt;自定义组件标题22222&lt;/h1&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</mycompoent></li>
+</ul>
+</li>
+<li><p>渲染组件标签<br>ReactDOM.render(<mycomponent>, document.getElementById(‘example’));</mycomponent></p>
 </li>
 </ul>
 </li>
-<li><p>渲染组件标签</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ReactDOM.render(&lt;MyComp /&gt;,  cotainerEle);</div></pre></td></tr></table></figure>
+<li>注意:<ul>
+<li>返回的组件类必须首字母大写</li>
+<li>虚拟DOM元素必须只有一个根元素</li>
+<li>虚拟DOM元素必须有结束标签</li>
+</ul>
 </li>
-<li><p>ReactDOM.render()渲染组件标签的基本流程</p>
-<ul>
+<li>ReactDOM.render()渲染组件标签的基本流程<ul>
 <li>React内部会创建组件实例对象</li>
-<li>得到虚拟DOM并解析为真实DOM</li>
+<li>得到包含的虚拟DOM并解析为真实DOM</li>
 <li>插入到指定的页面元素内部</li>
 </ul>
 </li>
-<li><p>props</p>
-<ul>
-<li>所有组件标签的属性的集合对象</li>
-<li>给标签指定属性, 保存外部数据(可能是一个function)</li>
-<li>在组件内部读取属性: this.props.propertyName</li>
-<li>作用: 从目标组件外部向组件内部传递数据</li>
-<li>对props中的属性值进行类型限制和必要性限制<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Person.propTypes = &#123;</div><div class="line">  name: React.PropTypes.string.isRequired,</div><div class="line">  age: React.PropTypes.number.isRequired</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
 </ul>
+<h3 id="组件3大属性之一-props属性"><a href="#组件3大属性之一-props属性" class="headerlink" title="组件3大属性之一: props属性"></a>组件3大属性之一: props属性</h3><ul>
+<li>每个组件对象都会有props(properties的简写)属性</li>
+<li>组件标签的所有属性都保存在props中</li>
+<li>内部读取某个属性值: this.props.propertyName</li>
+<li>作用: 通过标签属性从组件外向组件内传递数据(只读)</li>
+<li><p>对props中的属性值进行类型限制和必要性限制</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Person.propTypes = &#123;</div><div class="line">  name: React.PropTypes.string.isRequired,</div><div class="line">  age: React.PropTypes.number.isRequired</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>扩展属性: 将对象的所有属性通过props传递</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Person &#123;...person&#125;/&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Person &#123;...person&#125;/&gt;</div></pre></td></tr></table></figure>
 </li>
-<li><p>组件的组合</p>
-<ul>
-<li>组件标签中包含子组件标签</li>
-<li>拆分组件: 拆分界面, 抽取组件</li>
-<li>通过props传递数据</li>
+<li><p>默认属性值</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Person.defaultProps = &#123;</div><div class="line">  name: &apos;Mary&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>组件类的构造函数</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">constructor (props) &#123;</div><div class="line">  super(props);</div><div class="line">  console.log(props); // 查看所有属性</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
+<h3 id="组件的3大属性之二-refs属性"><a href="#组件的3大属性之二-refs属性" class="headerlink" title="组件的3大属性之二: refs属性"></a>组件的3大属性之二: refs属性</h3><ul>
+<li><p>refs属性</p>
+<ul>
+<li>组件内的标签都可以定义ref属性来标识自己</li>
+<li>在组件中可以通过this.refs.refName来得到对应的真实DOM对象</li>
+<li>作用: 用于操作指定的ref属性的dom元素对象(表单标签居多)  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input ref=&apos;username&apos;&gt;</div><div class="line">this.refs.username //返回input对象</div></pre></td></tr></table></figure>
 </li>
-<li>refs<ul>
-<li>组件内包含ref属性的标签元素的集合对象</li>
-<li>给操作目标标签指定ref属性, 打一个标识</li>
-<li>在组件内部获得标签对象: this.refs.refName(只是得到了标签元素对象)</li>
-<li>作用: 操作组件内部的真实标签dom元素对象</li>
 </ul>
 </li>
 <li><p>事件处理</p>
 <ul>
-<li>自定义的事件处理, 通过事件委托的方式实现(委托给组件的根标签)</li>
-<li>给标签添加属性: onXxx={this.eventHandler}</li>
-<li>在组件中添加事件处理方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eventHandler(event) &#123;</div><div class="line">              </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>通过onXxx属性指定组件的事件处理函数(注意大小写)<ul>
+<li>React使用的是自定义(合成)事件, 而不是使用的DOM事件</li>
+<li>React中的事件是通过委托方式处理的(委托给组件最外层的元素)</li>
+</ul>
+</li>
+<li>通过event.target得到发生事件的DOM元素对象  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;input onFocus=&#123;this.handleClick&#125;/&gt;</div><div class="line">handleFocus(event) &#123;</div><div class="line">  event.target  //返回input对象</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p>使自定义方法中的this为组件对象</p>
+<li><p>强烈注意</p>
 <ul>
-<li>在constructor()中bind(this)</li>
-<li>onXxx={this.eventHandler.bind(this)}</li>
-<li>使用箭头函数定义方法(ES6模块化编码时才能使用)</li>
+<li>组件内置的方法中的this为组件对象</li>
+<li>在组件中自定义的方法中的this为null<ul>
+<li>强制绑定this</li>
+<li>箭头函数(ES6模块化编码时才能使用)</li>
 </ul>
-</li>
-<li><p>state</p>
-<ul>
-<li>组件被称为”状态机”, 页面的显示是根据组件的state属性的数据来显示</li>
-<li>初始化指定:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">constructor() &#123;</div><div class="line">  super();</div><div class="line">  this.state = &#123;</div><div class="line">    stateName1 : stateValue1,</div><div class="line">    stateName2 : stateValue2</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li><p>读取显示: this.state.stateName1</p>
-<ul>
-<li>更新状态–&gt;更新界面 : this.setState({stateName1 : newValue})</li>
 </ul>
+<h3 id="组件3大属性之-state属性"><a href="#组件3大属性之-state属性" class="headerlink" title="组件3大属性之: state属性"></a>组件3大属性之: state属性</h3><ul>
+<li>组件被称为”状态机”, 通过更新组件的状态值来更新对应的页面显示(重新渲染)</li>
+<li><p>初始化状态:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">constructor (props) &#123;</div><div class="line">  super(props);</div><div class="line">  this.state = &#123;</div><div class="line">    stateProp1 : value1,</div><div class="line">    stateProp2 : value2</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li>实现一个双向绑定的组件<ul>
+<li><p>读取某个状态值</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">this.state.statePropertyName</div></pre></td></tr></table></figure>
+</li>
+<li><p>更新状态—-&gt;组件界面更新</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">this.setState(&#123;</div><div class="line">  stateProp1 : value1,</div><div class="line">  stateProp2 : value2</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="实现一个双向绑定的组件"><a href="#实现一个双向绑定的组件" class="headerlink" title="实现一个双向绑定的组件"></a>实现一个双向绑定的组件</h3><ul>
 <li>React是单向数据流</li>
-<li>需要通过onChange监听手动实现</li>
-</ul>
+<li>需要通过onChange监听手动实现  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">class App extends React.Component &#123;</div><div class="line">    constructor() &#123;</div><div class="line">        super()</div><div class="line">        this.state = &#123;</div><div class="line">            value: &apos;&apos;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    handleChange(e) &#123;</div><div class="line">        const value = e.target.value;</div><div class="line">        this.setState(&#123; value &#125;)</div><div class="line">    &#125;</div><div class="line">    render() &#123;</div><div class="line">        const &#123; value &#125; = this.state.value;</div><div class="line">        return (</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;input type=&quot;text&quot; value=&#123;value&#125; onChange=&#123;this.handleChange.bind(this)&#125;/&gt;</div><div class="line">                &lt;p&gt;&#123;this.state.value&#125;&lt;/p&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">ReactDOM.render(&lt;App/&gt;, document.getElementById(&apos;example&apos;));</div></pre></td></tr></table></figure>
 </li>
-<li><p>组件生命周期</p>
-<ul>
+</ul>
+<h3 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h3><ul>
 <li>组件的三个生命周期状态:<ul>
 <li>Mount：插入真实 DOM</li>
 <li>Update：被重新渲染</li>
 <li>Unmount：被移出真实 DOM</li>
 </ul>
 </li>
-<li><p>生命周期流程:</p>
-<ul>
-<li><p>第一次初始化显示</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">constructor()</div><div class="line">componentWillMount() : 将要插入回调</div><div class="line">render() : 用于插入虚拟DOM回调</div><div class="line">componentDidMount() : 已经插入回调</div></pre></td></tr></table></figure>
+<li>React 为每个状态都提供了两种勾子(hook)函数，will 函数在进入状态之前调用，did 函数在进入状态之后调用<ul>
+<li>componentWillMount()</li>
+<li>componentDidMount() : 已插入真实DOM, 在render之后才会执行</li>
+<li>componentWillUpdate(object nextProps, object nextState)</li>
+<li>componentDidUpdate(object prevProps, object prevState)</li>
+<li>componentWillUnmount()</li>
+</ul>
 </li>
-<li><p>每次更新state</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">componentWillUpdate() : 将要更新回调</div><div class="line">render() : 更新(重新渲染)</div><div class="line">componentDidUpdate() : 已经更新回调</div></pre></td></tr></table></figure>
+<li>生命周期流程:<ul>
+<li>第一次初始化渲染显示: render()<ul>
+<li>constructor(): 创建对象初始化state</li>
+<li>componentWillMount() : 将要插入回调</li>
+<li>render() : 用于插入虚拟DOM回调</li>
+<li>componentDidMount() : 已经插入回调</li>
+</ul>
+</li>
+<li>每次更新props<ul>
+<li>componentWillReceiveProps() : 将要接收父组件传来的props</li>
+<li>shouldComponentUpdate() : 子组件是不是应该更新 返回true更新，返回false不更新</li>
+<li>componentWillUpdate() : 将要更新回调</li>
+<li>render() : 更新(重新渲染)</li>
+<li>componentDidUpdate() : 已经更新回调</li>
+</ul>
+</li>
+<li>每次更新state: this.setSate()<ul>
+<li>componentWillUpdate() : 将要更新回调</li>
+<li>render() : 更新(重新渲染)</li>
+<li>componentDidUpdate() : 已经更新回调</li>
+</ul>
+</li>
+<li>删除组件<ul>
+<li>ReactDOM.unmountComponentAtNode(document.getElementById(‘example’)) : 移除组件</li>
+<li>componentWillUnmount() : 组件将要被移除回调</li>
+</ul>
 </li>
 </ul>
 </li>
-<li><p>删除组件</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ReactDOM.unmountComponentAtNode(document.getElementById(&apos;example&apos;)) : 移除组件</div><div class="line">componentWillUnmount() : 组件将要被移除回调</div></pre></td></tr></table></figure>
-</li>
-<li><p>常用的方法</p>
-<pre><code>render()
-constructor()
-componentDidMount() : 只执行一次, 已经在dom树中, 适合启动/设置一些监听
-</code></pre></li>
+<li>注意:<ul>
+<li>一般会在componentDidMount()中: 开启监听, 发送ajax请求</li>
+<li>可以在componentWillUnmount()做一些收尾工作: 停止监听</li>
 </ul>
+</li>
+<li>生命周期例子：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line"></div><div class="line">class Component extends React.Component&#123;</div><div class="line">    // 构造函数</div><div class="line">    constructor(props)&#123;</div><div class="line">        super(props)</div><div class="line">        this.state = &#123;</div><div class="line">            data: &apos;Old State&apos;</div><div class="line">        &#125;</div><div class="line">        console.log(&apos;初始化数据&apos;,&apos;constructor&apos;);</div><div class="line">    &#125;</div><div class="line">    // 组件将要加载</div><div class="line">    componentWillMount()&#123;</div><div class="line">        console.log(&apos;componentWillMount&apos;);</div><div class="line">    &#125;</div><div class="line">    // 组件加载完成</div><div class="line">    componentDidMount()&#123;</div><div class="line">        console.log(&apos;componentDidMount&apos;);</div><div class="line">    &#125;</div><div class="line">    // 将要接收父组件传来的props</div><div class="line">    componentWillReceiveProps()&#123;</div><div class="line">        console.log(&apos;componentWillReceiveProps&apos;);</div><div class="line">    &#125;</div><div class="line">    // 子组件是不是应该更新</div><div class="line">    shouldComponentUpdate()&#123;</div><div class="line">        console.log(&apos;shouldComponentUpdate&apos;);</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line">    // 组件将要更新</div><div class="line">    componentWillUpdate()&#123;</div><div class="line">        console.log(&apos;componentWillUpdate&apos;);</div><div class="line">    &#125;</div><div class="line">    // 组件更新完成</div><div class="line">    componentDidUpdate()&#123;</div><div class="line">        console.log(&apos;componentDidUpdate&apos;);</div><div class="line">    &#125;</div><div class="line">    // 组件即将销毁</div><div class="line">    componentWillUnmount()&#123;</div><div class="line">        console.log(&apos;componentWillUnmount&apos;);</div><div class="line">    &#125;</div><div class="line">    // 处理点击事件</div><div class="line">    handleClick()&#123;</div><div class="line">        console.log(&apos;更新数据：&apos;);</div><div class="line">        this.setState(&#123;</div><div class="line">            data: &apos;New State&apos;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    // 渲染</div><div class="line">    render()&#123;</div><div class="line">        console.log(&apos;render&apos;)</div><div class="line">        return (</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;div&gt;Props: &#123;this.props.data&#125;&lt;/div&gt;</div><div class="line">                &lt;button onClick=&#123;()=&gt;&#123;this.handleClick()&#125;&#125;&gt;更新组件&lt;/button&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class App extends React.Component&#123;</div><div class="line">    // 构造函数</div><div class="line">    constructor(props)&#123;</div><div class="line">        super(props)</div><div class="line">        this.state = &#123;</div><div class="line">            data: &apos;Old Props&apos;,</div><div class="line">            hasChild: true</div><div class="line">        &#125;</div><div class="line">        console.log(&apos;初始化数据&apos;,&apos;constructor&apos;);</div><div class="line">    &#125;</div><div class="line">    onPropsChange()&#123;</div><div class="line">        console.log(&apos;更新props:&apos;);</div><div class="line">        this.setState(&#123;</div><div class="line">            data: &apos;New Props&apos;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    onDestoryChild()&#123;</div><div class="line">        console.log(&apos;干掉子组件：&apos;);</div><div class="line">        this.setState(&#123;</div><div class="line">            hasChild: false</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    render()&#123;</div><div class="line">        return (</div><div class="line">        &lt;div&gt;</div><div class="line">            &#123;</div><div class="line">                this.state.hasChild ? &lt;Component data=&#123;this.state.data&#125;/&gt; : null</div><div class="line">            &#125;</div><div class="line">            &lt;button onClick=&#123;()=&gt;&#123;this.onPropsChange()&#125;&#125;&gt;改变Props&lt;/button&gt;</div><div class="line">            &lt;button onClick=&#123;()=&gt;&#123;this.onDestoryChild()&#125;&#125;&gt;干掉子组件&lt;/button&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">    &lt;App/&gt;,</div><div class="line">    document.getElementById(&apos;app&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="应用编码"><a href="#应用编码" class="headerlink" title="应用编码:"></a>应用编码:</h3><ul>
@@ -573,6 +667,10 @@ componentDidMount() : 只执行一次, 已经在dom树中, 适合启动/设置�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/16/git的使用（收集整理）/" rel="prev" title="git的使用（收集整理）">
+                git的使用（收集整理） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -683,7 +781,7 @@ componentDidMount() : 只执行一次, 已经在dom树中, 适合启动/设置�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React的基本认识"><span class="nav-number">1.</span> <span class="nav-text">React的基本认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用React"><span class="nav-number">2.</span> <span class="nav-text">使用React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX"><span class="nav-number">3.</span> <span class="nav-text">JSX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Component-React是面向组件编程的-组件化编码开发"><span class="nav-number">4.</span> <span class="nav-text">Component : React是面向组件编程的(组件化编码开发)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用编码"><span class="nav-number">5.</span> <span class="nav-text">应用编码:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件总结"><span class="nav-number">6.</span> <span class="nav-text">组件总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React的基本认识"><span class="nav-number">1.</span> <span class="nav-text">React的基本认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用React"><span class="nav-number">2.</span> <span class="nav-text">使用React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#认识JSX"><span class="nav-number">3.</span> <span class="nav-text">认识JSX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Component基础"><span class="nav-number">4.</span> <span class="nav-text">Component基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件3大属性之一-props属性"><span class="nav-number">5.</span> <span class="nav-text">组件3大属性之一: props属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的3大属性之二-refs属性"><span class="nav-number">6.</span> <span class="nav-text">组件的3大属性之二: refs属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件3大属性之-state属性"><span class="nav-number">7.</span> <span class="nav-text">组件3大属性之: state属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现一个双向绑定的组件"><span class="nav-number">8.</span> <span class="nav-text">实现一个双向绑定的组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的生命周期"><span class="nav-number">9.</span> <span class="nav-text">组件的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用编码"><span class="nav-number">10.</span> <span class="nav-text">应用编码:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件总结"><span class="nav-number">11.</span> <span class="nav-text">组件总结</span></a></li></ol></div>
             
 
           </div>
