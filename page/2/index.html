@@ -532,11 +532,8 @@
 <li>componentWillUnmount()</li>
 </ul>
 </li>
-<li><p>生命周期流程:</p>
-<ul>
-<li><p>第一次初始化渲染显示: render()</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">graph TB</div><div class="line">    A[AAA] --&gt;B[BBB]</div></pre></td></tr></table></figure>
-<ul>
+<li>生命周期流程:<ul>
+<li>第一次初始化渲染显示: render()<ul>
 <li>constructor(): 创建对象初始化state</li>
 <li>componentWillMount() : 将要插入回调</li>
 <li>render() : 用于插入虚拟DOM回调</li>
@@ -632,7 +629,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -677,7 +674,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
