@@ -119,7 +119,7 @@ Learn Once, Write Anywhere(支持客户端与服务器渲染)
 
 React高效的原因
 虚拟(virtual)DOM,">
-<meta property="og:updated_time" content="2018-05-19T08:03:52.679Z">
+<meta property="og:updated_time" content="2018-05-19T08:20:59.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react_笔记">
 <meta name="twitter:description" content="React的基本认识
@@ -235,7 +235,7 @@ React高效的原因
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -245,7 +245,7 @@ React高效的原因
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -322,7 +322,7 @@ React高效的原因
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T20:00:00+08:00">
                 2018-05-16
@@ -468,11 +468,13 @@ React高效的原因
 </mycompoent></li>
 </ul>
 </li>
-<li><p>渲染组件标签<br>ReactDOM.render(<mycomponent>, document.getElementById(‘example’));</mycomponent></p>
+<li><p>渲染组件标签</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ReactDOM.render(&lt;MyComponent/&gt;, document.getElementById(&apos;example&apos;));</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
-<li>注意:<ul>
+<li><p>注意:</p>
+<ul>
 <li>返回的组件类必须首字母大写</li>
 <li>虚拟DOM元素必须只有一个根元素</li>
 <li>虚拟DOM元素必须有结束标签</li>
@@ -566,8 +568,11 @@ React高效的原因
 <li>componentWillUnmount()</li>
 </ul>
 </li>
-<li>生命周期流程:<ul>
-<li>第一次初始化渲染显示: render()<ul>
+<li><p>生命周期流程:</p>
+<ul>
+<li><p>第一次初始化渲染显示: render()</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">graph TB</div><div class="line">    A[AAA] --&gt;B[BBB]</div></pre></td></tr></table></figure>
+<ul>
 <li>constructor(): 创建对象初始化state</li>
 <li>componentWillMount() : 将要插入回调</li>
 <li>render() : 用于插入虚拟DOM回调</li>
@@ -719,10 +724,10 @@ React高效的原因
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -743,7 +748,7 @@ React高效的原因
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -813,7 +818,7 @@ React高效的原因
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
