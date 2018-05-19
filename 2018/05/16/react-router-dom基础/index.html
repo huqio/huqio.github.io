@@ -87,12 +87,31 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="路由的种类
+页面路由
+  12window.location.href = &amp;apos;http://www.baidu.com&amp;apos;;history.back();
+
+hash 路由
+  1234window.location = &amp;apos;#hash&amp;apos;;window.onhashchange = function()&amp;#123;    console.log(&amp;apos;cu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-router-dom基础">
+<meta property="og:url" content="http://yoursite.com/2018/05/16/react-router-dom基础/index.html">
 <meta property="og:site_name" content="我的个人博客">
+<meta property="og:description" content="路由的种类
+页面路由
+  12window.location.href = &amp;apos;http://www.baidu.com&amp;apos;;history.back();
+
+hash 路由
+  1234window.location = &amp;apos;#hash&amp;apos;;window.onhashchange = function()&amp;#123;    console.log(&amp;apos;cu">
+<meta property="og:updated_time" content="2018-05-19T11:18:09.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的个人博客">
+<meta name="twitter:title" content="react-router-dom基础">
+<meta name="twitter:description" content="路由的种类
+页面路由
+  12window.location.href = &amp;apos;http://www.baidu.com&amp;apos;;history.back();
+
+hash 路由
+  1234window.location = &amp;apos;#hash&amp;apos;;window.onhashchange = function()&amp;#123;    console.log(&amp;apos;cu">
 
 
 
@@ -120,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/16/react-router-dom基础/"/>
 
 
 
 
 
-  <title> 我的个人博客 </title>
+  <title> react-router-dom基础 | 我的个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -151,9 +170,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,9 +253,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -268,10 +285,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2018/05/16/react-router-dom基础/" itemprop="url">
-                  react-router-dom基础
-                </a>
+                react-router-dom基础
               
             
           </h1>
@@ -322,9 +336,7 @@
       
 
       
-        
-          
-            <h3 id="路由的种类"><a href="#路由的种类" class="headerlink" title="路由的种类"></a>路由的种类</h3><ul>
+        <h3 id="路由的种类"><a href="#路由的种类" class="headerlink" title="路由的种类"></a>路由的种类</h3><ul>
 <li><p>页面路由</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">window.location.href = &apos;http://www.baidu.com&apos;;</div><div class="line">history.back();</div></pre></td></tr></table></figure>
 </li>
@@ -342,16 +354,20 @@
 <li>例：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line">import &#123; BrowserRouter as Router, Switch, Route, Link &#125; from &apos;react-router-dom&apos;</div><div class="line"></div><div class="line"></div><div class="line">class A extends React.Component&#123;</div><div class="line">    constructor(props)&#123;</div><div class="line">        super(props)</div><div class="line">    &#125;</div><div class="line">    render()&#123;</div><div class="line">        return (</div><div class="line">            &lt;div&gt;</div><div class="line">            Component A</div><div class="line">            </div><div class="line">            &lt;Switch&gt;</div><div class="line">                &lt;Route exact path=&#123;`$&#123;this.props.match.path&#125;`&#125; render=&#123;(route) =&gt; &#123;</div><div class="line">                    return &lt;div&gt;当前组件是不带参数的A&lt;/div&gt;</div><div class="line">                &#125;&#125;/&gt;</div><div class="line">                &lt;Route path=&#123;`$&#123;this.props.match.path&#125;/sub`&#125; render=&#123;(route) =&gt; &#123;</div><div class="line">                    return &lt;div&gt;当前组件是Sub&lt;/div&gt;</div><div class="line">                &#125;&#125;/&gt;</div><div class="line">                &lt;Route path=&#123;`$&#123;this.props.match.path&#125;/:id`&#125; render=&#123;(route) =&gt; &#123;</div><div class="line">                    return &lt;div&gt;当前组件是带参数的A, 参数是：&#123;route.match.params.id&#125;&lt;/div&gt;</div><div class="line">                &#125;&#125;/&gt;</div><div class="line">            &lt;/Switch&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class B extends React.Component&#123;</div><div class="line">    constructor(props)&#123;</div><div class="line">        super(props)</div><div class="line">    &#125;</div><div class="line">    render()&#123;</div><div class="line">        return &lt;div&gt;Component B&lt;/div&gt;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Wrapper extends React.Component&#123;</div><div class="line">    constructor(props)&#123;</div><div class="line">        super(props)</div><div class="line">    &#125;</div><div class="line">    render()&#123;</div><div class="line">        return (</div><div class="line">            &lt;div&gt;</div><div class="line">                &lt;Link to=&quot;/a&quot;&gt;组件A&lt;/Link&gt;</div><div class="line">                &lt;br/&gt;</div><div class="line">                &lt;Link to=&quot;/a/123&quot;&gt;带参数的组件A&lt;/Link&gt;</div><div class="line">                &lt;br/&gt;</div><div class="line">                &lt;Link to=&quot;/b&quot;&gt;组件B&lt;/Link&gt;</div><div class="line">                &lt;br/&gt;</div><div class="line">                &lt;Link to=&quot;/a/sub&quot;&gt;/a/sub&lt;/Link&gt;</div><div class="line">                &#123;this.props.children&#125;</div><div class="line">            &lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">    &lt;Router&gt;</div><div class="line">        &lt;Wrapper&gt;</div><div class="line">            &lt;Route path=&quot;/a&quot; component=&#123;A&#125;/&gt;</div><div class="line">            &lt;Route path=&quot;/b&quot; component=&#123;B&#125;/&gt;</div><div class="line">        &lt;/Wrapper&gt;</div><div class="line">    &lt;/Router&gt;,</div><div class="line">    document.getElementById(&apos;app&apos;)</div><div class="line">);</div></pre></td></tr></table></figure></li>
 </ul>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -360,25 +376,38 @@
       
 
       
-
+        
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/14/redux基础/" rel="next" title="redux基础">
+                <i class="fa fa-chevron-left"></i> redux基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -386,6 +415,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -405,8 +438,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -450,6 +492,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#路由的种类"><span class="nav-number">1.</span> <span class="nav-text">路由的种类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-router学习推荐地址："><span class="nav-number">2.</span> <span class="nav-text">react-router学习推荐地址：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-router-dom基本使用"><span class="nav-number">3.</span> <span class="nav-text">react-router-dom基本使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -555,6 +613,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
